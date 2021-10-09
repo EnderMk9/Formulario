@@ -1,0 +1,179 @@
+\documentclass[10pt,landscape,letterpaper]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{spverbatim}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage[colorlinks=true,urlcolor=olgreen]{hyperref}
+\usepackage{booktabs}
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+\setsansfont{Fira Sans}
+\setmonofont{Inconsolata}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage{microtype}
+% dirty fix for microtype
+\makeatletter
+\def\MT@is@composite#1#2\relax{%
+  \ifx\\#2\\\else
+    \expandafter\def\expandafter\MT@char\expandafter{\csname\expandafter
+                    \string\csname\MT@encoding\endcsname
+                    \MT@detokenize@n{#1}-\MT@detokenize@n{#2}\endcsname}%
+    % 3 lines added:
+    \ifx\UnicodeEncodingName\@undefined\else
+      \expandafter\expandafter\expandafter\MT@is@uni@comp\MT@char\iffontchar\else\fi\relax
+    \fi
+    \expandafter\expandafter\expandafter\MT@is@letter\MT@char\relax\relax
+    \ifnum\MT@char@ < \z@
+      \ifMT@xunicode
+        \edef\MT@char{\MT@exp@two@c\MT@strip@prefix\meaning\MT@char>\relax}%
+          \expandafter\MT@exp@two@c\expandafter\MT@is@charx\expandafter
+            \MT@char\MT@charxstring\relax\relax\relax\relax\relax
+      \fi
+    \fi
+  \fi
+}
+% new:
+\def\MT@is@uni@comp#1\iffontchar#2\else#3\fi\relax{%
+  \ifx\\#2\\\else\edef\MT@char{\iffontchar#2\fi}\fi
+}
+\makeatother
+
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{margin=0.4in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\sffamily\large}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\sffamily\normalsize\itshape}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\itshape}}
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+% -----------------------------------------------------------------------
+
+\usepackage{mathtools}
+
+\begin{document}
+\footnotesize
+%\raggedright
+
+\begin{center}
+  {\huge\sffamily\bfseries MM I} -  Abel Rosado\\
+\end{center}
+\setlength{\premulticols}{0pt}
+\setlength{\postmulticols}{0pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{1.8em}
+\begin{multicols}{3}
+\section{Variables separable}
+\[y'=\frac{dy}{dx}=f(x)\cdot g(y) \rightarrow \int{\frac{dy}{g(y)}}=\int{f(x) \ dx} +C\]
+\section{Reducibles a variables separable}
+\[y'=f(ax+by+c) \rightarrow \begin{matrix}
+  z=ax+by+c \\
+  y' = {(z'-a)}/{b}
+\end{matrix} \rightarrow z' = bf(z)+a \implies \mbox{Separable}\]
+\section{Homogéneas}
+\[y'=f(kx,ky)=f(x,y) \ \forall k \rightarrow \begin{matrix}
+  z=y/x \\
+  y' = z+xz' \end{matrix} \rightarrow y'=f(x,y)=f(1,z) \]
+\[z+xz' = f(1-z) \rightarrow z' = [f(1,z)-z]\frac{1}{x} \rightarrow \mbox{Separable}\]
+\section{Reducibles a homogénea}
+\[y'=f\left(\frac{ax+by+c}{a'x+b'y+c'}\right); \ \ \boxed{\mbox{Caso A. Si } c=c'=0 \implies \mbox{Homogénea}}\]
+
+\fbox{\begin{minipage}{29em}
+\[\mbox{Caso B. Si } \left|\begin{matrix}
+  a & b \\ a' & b'
+\end{matrix}\right| \neq 0; \  \left\{\begin{matrix}
+  x=\alpha + h \\ y= \beta +k
+\end{matrix}\right. \mbox{ : } \frac{ax+by+c}{a'x+b'y+c'} = \frac{a\alpha+b\beta}{a'\alpha+b'\beta} \]
+\[\left(\begin{matrix}
+  a & b \\ a' & b'
+\end{matrix}\right)\left(\begin{matrix}
+  h \\ k
+\end{matrix}\right) = -\left(\begin{matrix}
+  c \\ c'
+\end{matrix}\right)\rightarrow y'=\beta'=f\left(\frac{a\alpha+b\beta}{a'\alpha+b'\beta}\right) \implies \mbox{Caso A}\]\end{minipage}}
+
+\fbox{\begin{minipage}{29em}
+\[\mbox{Caso C. Si } \left|\begin{matrix}
+  a & b \\ a' & b'
+\end{matrix}\right| = 0 \implies \begin{matrix}
+  a'=d \cdot a \\ b' = d \cdot b
+\end{matrix} \rightarrow y'=f\left(\frac{ax+by+c}{d(ax+by)+c'}\right)\]
+\[\begin{matrix}
+  z=ax+by \\ y'=(z'-a)/b
+\end{matrix} \rightarrow  z'=a+bf\left(\frac{z+c}{dz+c'}\right) \implies \mbox{Sep.}\]\end{minipage}}
+\section{Exactas}
+\[M(x,y)dx+N(x,y)dy=0 \mbox{ es exacta } \iff M=\frac{\partial f}{\partial x}; \ N=\frac{\partial f}{\partial y} \iff \]
+\[\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}; \mbox{ Entonces encontramos } f \mbox{ y la solución es } f(x,y)=C\]
+\section{Cuasi-exactas}
+Si $M(x,y)dx+N(x,y)dy=0$ no es exacta, se puede encontrar un $\mu(x,y)$ t.q. 
+$\mu \cdot \left(M(x,y)dx+N(x,y)dy\right)=0$ es exacta.
+\[\frac{\partial(\mu M)}{\partial y}=\frac{\partial(\mu N)}{\partial x}\rightarrow \frac{1}{\mu}\left(N\frac{\partial \mu}{\partial x}-M\frac{\partial \mu}{\partial y}\right)=\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}\]
+Solo puede resolverse suponiendo $\mu = \mu(x) \mbox{ o } \mu=\mu(y)$
+\[\mu = \mu(x): \frac{\mu'}{\mu}=\left(\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}\right)/N=g(x) \mbox{ función solo de x.}\]
+\[\mu = \mu(y): \frac{\mu'}{\mu}=\left(\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}\right)/M=h(y) \mbox{ función solo de y.}\]
+Si $g$ depende también de la otra variable, no podemos resolverla.
+\[\frac{1}{\mu}\frac{d \mu}{dx} = g(x) \rightarrow \mbox{Sep.} \rightarrow \mu \cdot \left(M(x,y)dx+N(x,y)dy\right)=0 \mbox{ exacta}\]
+\section{Lineales}
+\[y'+p(x)y=q(x) \ \ \boxed{\mbox{Caso A. Si } q(x)=0 \implies \mbox{ Sep.}}\]
+
+\fbox{\begin{minipage}{29em}
+  \[\mbox{Caso B. Si } q(x) \neq 0; \mbox{ Resolvemos } y_h'+p(x)y_h=0 \rightarrow y=c(x)y_h(x)\]
+  \[y' = c' y_h+c y_h' \rightarrow c' y_h + c y_h' +p(x) c y_h = q(x)\]
+  \[c' y_h + c (y_h' +p(x) y_h) = q(x) \rightarrow c'y_h = q(x) \implies \mbox{ Sep.}\]
+\end{minipage}}
+\section{Bernoulli}
+\[y'+p(x)y=q(x)y^n, \ \ n\neq 0\neq 1 \rightarrow \begin{matrix}
+  z = 1/y^{n-1}; \ y=z^{-1/(n-1)} \\ y' = [-1/(n-1)]z^{-n/(n-1)}z'
+\end{matrix}\]
+\[\frac{-1}{n-1}z^{\frac{-n}{n-1}}z' + p(x)z^{\frac{-1}{n-1}}=q(x)z^{\frac{-n}{n-1}}\rightarrow \frac{-1}{n-1} z' + zp(x)=q(x) \mbox{ (Lineal)}\]
+\section{Paramétricas}
+\fbox{\begin{minipage}{29em}
+  \[\mbox{Caso A. } f(y,y')=0 : y=g(y') \rightarrow y'=\frac{dy}{dx}=p; \ \ dy=pdx\]
+  \[\boxed{y=g(p)} \rightarrow dy=g'(p)dp=pdx \rightarrow \boxed{dx = \frac{g'(p)}{p}dp} \mbox{ (Sep.)}\]
+\end{minipage}}
+
+\fbox{\begin{minipage}{29em}
+  \[\mbox{Caso B. } f(x,y')=0 : x=g(y') \rightarrow y'=\frac{dy}{dx}=p; \ \ dx=dy/p\]
+  \[\boxed{x=g(p)} \rightarrow dx=g'(p)dp=dy/p \rightarrow \boxed{dy = p g'(p)dp} \mbox{ (Sep.)}\]
+\end{minipage}}
+\section{Lagrange}
+\[y=xf(y')+g(y') \rightarrow y'=p; \ \ dy = f(p)dx + xf'(p)dp+g'(p)dp= pdx\]
+\[p\frac{dx}{dp} = f(p)\frac{dx}{dp} + xf'(p)+g'(p) \rightarrow \boxed{(f(p)-p) \frac{dx}{dp} +xf'(p)=-g'(p)}\]
+\[ \implies \mbox{(Lineal) } x=[\mbox{sol. lineal}]; \ \ \ \ y(p)=[\mbox{sol. lineal}]f(p)+g(p)\]
+\section{Clairut}
+\[y=xy'+g(y') \mbox{ (Lagrn.) } (p)dx + xdp+g'(p)dp = pdx \rightarrow dp [x+g'(p)]=0\]
+\[x+g'(p) = 0 \rightarrow x=-g'(p); \ \ \ \ y=-g'(p)p+g(p) \mbox{ (Sol. particular)}\]
+\[dp = 0 \implies p=c \implies y = cx+g(c) \mbox{ (Sol. general)}\]
+\section{Ricatti}
+\[y' + a(x)y^2+b(x)y+c=0 \ \& \mbox{ SP } y_1 \rightarrow y = y_1 +z; \ \ y' = y_1'+z' \]
+\[\mbox{Sustimos y SP = 0} \rightarrow \boxed{z'+(2a y_1 +b)z +az^2=0} \mbox{ (Bernoulli)}\]
+\[y' + a(x)y^2+b(x)y+c=0 \ \& \mbox{ 2 SP } y_1; \ y_2 \rightarrow \boxed{\frac{y-y_1}{y-y_2}=Ce^{\int{a(y_2-y_1)dx}}}\]
+\section{Familias de curvas}
+\[y=g(x,a) \rightarrow y' = \frac{\partial g}{\partial x} \rightarrow \mbox{ eliminamos a y obtenemos } F(x,y,y')=0\]
+\[h(x,y,a)=0 \rightarrow \frac{dh}{dx} = \frac{\partial h}{\partial x} + \frac{\partial h}{\partial y} y' =0 \rightarrow \mbox{ eliminamos a..., } F(x,y,y')=0\]
+\[F(x,y,-\frac{1}{y}) \mbox{ es la trayectoria ortogonal a la familia de curvas}\]
+\[h(x,y,\{a_i\})=0 \rightarrow \frac{d^i h}{dx^i} =0 \rightarrow \mbox{ eliminamos } {a^i} \mbox{ ..., } F(x,y,\{y^{(i)}\})=0\]
+\section{Reducción de orden}
+\[F(x,y^{(k)},\dots,y^{(n)})=0\rightarrow u=y^{(k)} \rightarrow F(x,u,\dots,u^{(n-k)})=0\]
+\[F(y,\{y^{(i)}\})=0 \rightarrow y'=p(y); \ y''=p'p; \  \dots \rightarrow F(y,p,\{p^{(j)}\})=0\]
+\end{multicols}
+
+\end{document}
