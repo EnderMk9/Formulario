@@ -80,7 +80,7 @@
 \setlength{\postmulticols}{0pt}
 \setlength{\multicolsep}{1pt}
 \setlength{\columnsep}{1.8em}
-\begin{multicols}{3}
+\begin{multicols}{3}%% __________________________________________________________________________________________________
 \textbf{Reducibles a variable separable}
 \vspace{-5pt}
 \[y'=f(ax+by+c) \rightarrow \begin{matrix}
@@ -88,6 +88,7 @@
   y' = {(z'-a)}/{b}
 \end{matrix} \rightarrow z' = bf(z)+a\]
 
+%% __________________________________________________________________________________________________
 \vspace{-7pt}
 \textbf{Homogéneas}
 \vspace{-8pt}
@@ -95,6 +96,7 @@
   z=y/x \\
   y' = z+xz' \end{matrix}  \rightarrow \mbox{Separable}\]
 
+  %% __________________________________________________________________________________________________
 \vspace{-8pt}
 \textbf{Reducibles a homogénea}
 \vspace{-3pt}
@@ -117,72 +119,81 @@
 \end{matrix}\]
 \end{minipage}}
 
+%% __________________________________________________________________________________________________
 \textbf{Exactas}
 \vspace{-6pt}
 \[M(x,y)dx+N(x,y)dy=0 \mbox{ es exacta } \iff M=\frac{\partial f}{\partial x}; \ N=\frac{\partial f}{\partial y} \iff \]
 \vspace{-10pt}
-\[\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}; \mbox{ Entonces encontramos } f \mbox{ y la solución es } f(x,y)=C\]
+\[\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}; \mbox{ Entonces encontramos } f \mbox{ y la solución es } f(x,y)=C\]%% __________________________________________________________________________________________________
 \textbf{Cuasi-exactas}
 Si $M(x,y)dx+N(x,y)dy=0$ no es exacta, se puede encontrar un $\mu(x,y):$
 $\mu \cdot \left(M(x,y)dx+N(x,y)dy\right)=0$ exacta.
 \[\frac{\partial(\mu M)}{\partial y}=\frac{\partial(\mu N)}{\partial x}\rightarrow \frac{1}{\mu}\left(N\frac{\partial \mu}{\partial x}-M\frac{\partial \mu}{\partial y}\right)=\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}\]
 Solo puede resolverse suponiendo $\mu = \mu(x) \mbox{ o } \mu=\mu(y)$
-\[\mu = \mu(x): \frac{\mu'}{\mu}=\left(\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}\right)/N=g(x) \mbox{ función solo de x.}\]
+\[\mu = \mu(x): \frac{\mu'}{\mu}=\left(\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x}\right)/N=g(x) \rightarrow \mu=e^{\int{g(x)dx}}\]
 \vspace{-7pt}
-\[\mu = \mu(y): \frac{\mu'}{\mu}=\left(\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}\right)/M=h(y) \mbox{ función solo de y.}\]
+\[\mu = \mu(y): \frac{\mu'}{\mu}=\left(\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}\right)/M=h(y) \rightarrow \mu=e^{\int{h(y)dy}}\]
 \vspace{-10pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Lineales}
 \vspace{-8pt}
 \[y'+p(x)y=q(x) \mbox{ o } \frac{dx}{dy} + p(y)x=g(y) \ \ \boxed{\mbox{Caso A. } q(x)=0 \implies \mbox{ Sep.}}\]
 \vspace{-5pt}
-  \[\mbox{Caso B. Si } q(x) \neq 0; \mbox{ Resolvemos } y_h'+p(x)y_h=0 \rightarrow y=c(x)y_h(x)\]
-  \[ c'y_h = q(x) \implies \mbox{ Sep.}\]
-  \vspace{-18pt}
+\[\mbox{Caso B. Si } q(x) \neq 0; \mbox{ Resolvemos } y_h'+p(x)y_h=0 \rightarrow y=c(x)y_h(x)\]
+\[ c'y_h = q(x) \implies \mbox{ Sep.}\]
+\vspace{-18pt}
 
-  \textbf{Bernoulli}
-  \vspace{-5pt}
+%% __________________________________________________________________________________________________
+\textbf{Bernoulli}
+\vspace{-5pt}
 \[y'+p(x)y=q(x)y^n, \ \ z = 1/y^{n-1}; \ \ \frac{-1}{n-1} z' + zp(x)=q(x)\]
 \vspace{-9pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Paramétricas}
 \vspace{-3pt}
-  \[\mbox{Caso A. } f(y,y')=0 : y=g(y') \rightarrow y'=p; \ \boxed{dx =  g'(p) dp/p}\]
+\[\mbox{Caso A. } f(y,y')=0 : y=g(y') \rightarrow y'=p; \ \boxed{dx =  g'(p) dp/p}\]
 \vspace{-7pt}
-  \[\mbox{Caso B. } f(x,y')=0 : x=g(y') \rightarrow y'=p;  \ \boxed{dy = p g'(p)dp}\]
-  \vspace{-10pt}
+\[\mbox{Caso B. } f(x,y')=0 : x=g(y') \rightarrow y'=p;  \ \boxed{dy = p g'(p)dp}\]
+\vspace{-10pt}
 
-  \textbf{Lagrange}
+%% __________________________________________________________________________________________________
+\textbf{Lagrange}
 \vspace{-10pt}
 \[y=xf(y')+g(y') \rightarrow y'=p; \ \ \boxed{(f(p)-p) \frac{dx}{dp} +xf'(p)=-g'(p)}\]
 \vspace{-10pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Clairut}
 \vspace{-8pt}
 \[y=xy'+g(y') \mbox{ (Lagrange) }  \rightarrow dp [x+g'(p)]=0\]
-\[x+g'(p) = 0 \mbox{ (SG)}; \ \ dp = 0 \mbox{ (SP)}\]
+\[x+g'(p) = 0 \mbox{ (SP)}; \ \ dp = 0 \mbox{ (SG)}\]
 \vspace{-19pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Ricatti}
 \vspace{-5pt}
 \[y' + a(x)y^2+b(x)y+c=0 \ \& \mbox{ SP } y_1 \rightarrow y = y_1 +z; \ \ y' = y_1'+z' \]
-\[\mbox{Sustimos y SP = 0} \rightarrow \boxed{z'+(2a y_1 +b)z +az^2=0} \mbox{ (Bernoulli)}\]
-\[y' + a(x)y^2+b(x)y+c=0 \ \& \mbox{ 2 SP } y_1; \ y_2 \rightarrow \boxed{\frac{y-y_1}{y-y_2}=Ce^{\int{a(y_2-y_1)dx}}}\]
+\[\mbox{Sustituimos y SP = 0} \rightarrow \boxed{z'+(2a y_1 +b)z +az^2=0} \mbox{ (Bernoulli)}\]
+\[y' + a(x)y^2+b(x)y+c=0 \ \& \mbox{ 2 SP } y_1; \ y_2 \rightarrow \boxed{\frac{y-y_1}{y-y_2}=Ce^{\int{a(y_2-y_1)dx}}}\]%% __________________________________________________________________________________________________
 \textbf{Familias de curvas}
 \vspace{-9pt}
 \[h(x,y,\{a_i\})=0 \rightarrow \frac{d^i h}{dx^i} =0 \rightarrow \mbox{ quitamos } {a^i};  F\left(x,y,\{y^{(i)}\}\right)=0\]
 \vspace{-10pt}
-\[F\left(x,y,-\frac{1}{y}\right) \mbox{ es la trayectoria ortogonal a la familia de curvas}\]
+\[F\left(x,y,-\frac{1}{y'}\right) \mbox{ es la trayectoria ortogonal a la familia de curvas}\]%% __________________________________________________________________________________________________
 \textbf{Reducción de orden}
 \[F(x,y^{(k)},\dots,y^{(n)})=0\rightarrow u=y^{(k)} \rightarrow F(x,u,\dots,u^{(n-k)})=0\]
 \[F(y,\{y^{(i)}\})=0 \rightarrow y'=p(y); \ y''=p'p; \  \dots \rightarrow F(y,p,\{p^{(j)}\})=0\]
 \[F(z,ty,\{ty^{(i)}\})=t^k F(z,y,\{y^{(i)}\}) \ \ \begin{matrix}
   y=e^{\int{z dx}} \\ y'=z e^{\int{z dx}}
-\end{matrix} \ , ... F(x,z,\{z^{(j)}\})\]
+\end{matrix} \ , ... F(x,z,\{z^{(j)}\})\]%% __________________________________________________________________________________________________
 \textbf{Teorema de Picard.}Si $f(x,y)$ y $\partial f / \partial y$ son funciones continuas sobre un cerrado $\mathbf{R}$ entonces por cada punto $(x_0,y_0)$ del interior de $\mathbf{R}$ pasa una única curva integral de la ecuación $dy/dx = f(x,y)$.
 
+%% __________________________________________________________________________________________________
 \textbf{Teorema de exist. y unicidad 2º orden lineal.} Sean $P(x)$, $Q(x)$, $R(x)$ continuas en un intervalo cerrado $[a,b]$, entonces si $x_0 \in [a, b]$ e $y_0$ , $y_0'$ son arbitrarios, la EDO: $y'' +P(x)y' +Q(x)y = R(x)$ tiene una única solución $y(x)$ en $[a, b]$ tal que $y(x_0) = y_0$ y $y'(x_0) = y_0'$.
 
+%% __________________________________________________________________________________________________
 \textbf{SG 2º orden lineal homogénea}
 $y_1$ e $y_2$ SPH lin. indp.
 \vspace{-5pt}
@@ -191,26 +202,30 @@ $y_1$ e $y_2$ SPH lin. indp.
 \[\mbox{Conocida } y_1 \mbox{ SPH }; y_2=u(x)y_1 \mbox{ también SPH}; \ u=\int{\frac{e^{-\int{P dx}}}{y_1^2}dx}\]
 \vspace{-10pt}
 
+%% __________________________________________________________________________________________________
 \textbf{SG 2º orden lineal homogénea Coef. Cte.}
 \vspace{-5pt}
 \[y''+py'+qy=0; \ \ y(x)=e^{mx}; \ \ m^2+pm+q=0\]
 \[y = C_1 e^{m_1x}+C_2 e^{m_2x}; \ y = e^{ax}(C_1 \cos{bx}+C_2\sin{bx})\]
-\[y=C_1 e^{-px/2}+C_2 x e^{-px/2} \mbox{ (R \neq; a}\pm\mbox{bi; R =)}\]
+\[y=C_1 e^{-px/2}+C_2 x e^{-px/2} [m_1 \neq m_2 (\mathbb{R}); a\pm bi (\mathbb{C}); m_1=m_2 (\mathbb{R})]\]%% __________________________________________________________________________________________________
 \textbf{Ecuación equidimensional de Euler}
 \vspace{-5pt}
 \[x^2y''+pxy'+qy=0; \ x=e^z \mbox{(coef. cte.) o } y=x^{m}\]
 \vspace{-12pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Transformar EDOH a coef. cte}
 \vspace{-4pt}
-\[\frac{Q'+2PQ}{Q^{3/2}}=\alpha \implies z=\int{\sqrt{Q}dx},  y''(z)+ky'(z)+cy(z)=0\]
+\[\frac{Q'+2PQ}{Q^{3/2}}=\alpha \implies z=\int{\sqrt{Q}dx},  y''(z)+ \frac{\alpha}{2}y'(z)+y(z)=0\]
 \vspace{-8pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Lineal inhomogénea de 2 orden}
 \vspace{-5pt}
 \[y(x)=y_h(x)+y_p(x); \ \ y_h \mbox{ SGH y } y_p \mbox{ SPI}\]
 \vspace{-13pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Coeficientes indeterminados}
 \vspace{-5pt}
 \[y''+py'+qy=R(x); \ R(x) :  e^{ax} \mbox{ (a)}; \sin{ax} \mbox{ o } \cos{ax}\mbox{ (b)}; \sum_{i=0}^n a_i x^i\mbox{ (c)}\]
@@ -221,17 +236,21 @@ $y_1$ e $y_2$ SPH lin. indp.
 \[\mbox{(b) } y_p=\sum_{i=0}^n A_i x^i; q\neq 0 \ \vert \ y_p=x\sum_{i=0}^n A_i x^i\]
 \vspace{-6.5pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Variación de ctes. (Cualquier EDOI 2º)}
 \vspace{-5pt}
 \[y_p=u_1(x)y_1(x)+u_2(x)y_2(x) \mbox{ a partir de la EDOH}\]
 \[u_1'y_1+u_2'y_2=0; \ u_1'y_1'+u_2'y_2'=R(x); \mbox{Resolver sist. lineal}\]
 
+%% __________________________________________________________________________________________________
 \textbf{Series de Potencias}
 \vspace{-5pt}
 \[\sum_{n=0}^\infty{a_{n}x^{n}}; R=\lim_{n \to \infty}{\left| \frac{a_{n}}{a_{n+1}} \right|}; \ f(x)\cdot g(x)=\sum_{n=0}^\infty \sum_{i=0}^n{p_{i}q_{n-i}}x^{n} \]
 \vspace{-7.5pt}
 
+%% __________________________________________________________________________________________________
 \textbf{Teorema}: Sea $x_{0}$ un punto ordinario de la EDO $y''$ + $y''+P(x)y'+Q(x)y=0$ y sean $a_{0}$, $a_{1}$ constantes arbitrarias $\implies$ existe una única función $y(x)$ analı́tica en $x_{0}$ que es solución de la EDO en un mismo entorno de $x_{0}$ que $f(x)$ y $g(x)$ y satisface $y(x0) = a0$ ; $y'(x_{0} ) = a_{1}$.
+%% __________________________________________________________________________________________________
 \phantom{ }
 
 \phantom{ }
