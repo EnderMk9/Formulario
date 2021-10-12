@@ -8,3 +8,4 @@ rm main.fls
 rm main.log
 rm main.out
 rm main.fdb_latexmk
+rm -R .auctex-auto
